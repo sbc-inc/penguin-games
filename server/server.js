@@ -14,7 +14,7 @@ app.get("/viewUserInfo", (req, res) => {
       id: 285974,
       name: "ok_overture_ajr",
       displayName: "ok_overture_ajr",
-      avatar: "https://cdn.penguingames.com/avatars/285974.png",
+      avatar: "https://cdn.statically.io/avatar/shape=circle/ok_overture_ajr",
 
     },
     game: {

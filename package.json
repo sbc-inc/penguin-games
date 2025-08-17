@@ -1,6 +1,6 @@
 {
   "name": "penguin-games",
-  "version": "open-source-official-1.0.0",
+  "version": "official-1.0.0",
   "description": "Create and play games by the community, for the community.",
   "type": "module",
   "main": "server/server.js",

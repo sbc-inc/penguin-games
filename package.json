@@ -2,18 +2,14 @@
   "name": "penguin-games",
   "version": "official-1.0.0",
   "description": "Create and play games by the community, for the community.",
-  "type": "module",
-  "main": "server/server.js",
   "scripts": {
-    "start": "node server/server.js",
-    "dev": "nodemon server/server.js"
-  },
-  "dependencies": {
-    "express": "^4.18.2",
-    "socket.io": "^4.7.2"
+    "start": "concurrently \"npm start --prefix server\" \"npm start --prefix client\"",
+    "dev": "concurrently \"npm run dev-server\" \"npm run dev-client\"",
+    "dev-server": "npm run dev --prefix server",
+    "dev-client": "npm run dev --prefix client"
   },
   "devDependencies": {
-    "nodemon": "^3.0.1"
+    "concurrently": "^8.2.1"
   },
   "keywords": [
     "games",

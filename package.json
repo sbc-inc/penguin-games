@@ -6,7 +6,7 @@
     "start": "concurrently \"npm start --prefix server\" \"npm start --prefix client\"",
     "dev": "concurrently \"npm run dev-server\" \"npm run dev-client\"",
     "dev-server": "npm run dev --prefix server",
-    "dev-client": "npx serve -l 0100 ./client --cors"
+    "dev-client": "npx serve -l 100 ./client --cors"
   },
   "devDependencies": {
     "concurrently": "^8.2.1"

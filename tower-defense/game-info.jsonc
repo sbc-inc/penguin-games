@@ -1,0 +1,13 @@
+{
+    "products": "./products.jsonc",
+    "gameName": "Tower Defense",
+    "gameDescription": "A strategic tower defense game where players build towers to defend against waves of teddy bears and whales.",
+    "gameIcon": "/game_assets/icons/game_icon.png",
+    "gameBanner": "/game_assets/banners/game_banner.png",
+    "penguin-games-libraries": {
+        "charLib": "1.0.1",
+        "purchases": "2.63.6",
+        "pgext": "1.9.7"
+    },
+    "pgext-registry": ["./pgext/towers/register.json", "./pgext/systemTime/register.jsonc"]
+}

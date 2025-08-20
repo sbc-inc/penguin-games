@@ -30,6 +30,7 @@
     <!-- Main Game Menu - No authentication needed -->
     <div id="main-menu" class="min-h-screen w-full flex">
         <!-- Left Sidebar -->
+                <!-- Left Sidebar -->
         <aside class="flex-shrink-0 w-64 bg-gray-900 border-r border-gray-800 p-4 flex flex-col justify-between hidden md:flex">
             <!-- Top section: Logo, Search, and Nav links -->
             <div class="flex-grow flex flex-col">
@@ -42,12 +43,12 @@
                 <!-- Navigation Links -->
                 <nav class="space-y-2">
                     <!-- A single nav item -->
-                    <a href="/" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-lg font-bold bg-sky-500 text-gray-900 shadow-lg">
+                    <a href="/" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-lg font-bold bg-gray-900 text-white-900 shadow-lg">
                         <i class="fa-solid fa-gamepad"></i>
                         <span>Play</span>
                     </a>                    
                     <!-- A second nav item -->
-                    <a href="/friends/" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-lg font-bold bg-gray-900 text-white-900 shadow-lg">
+                    <a href="/friends/" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-lg font-bold bg-sky-500 text-gray-900 shadow-lg">
                         <i class="fa-solid fa-user-group"></i>
                         <span>Friends</span>
                     </a>                    
@@ -65,7 +66,7 @@
                     <i class="fa-brands fa-github"></i>
                     <span>View on Github</span>
                 </a>
-                <a href="./settings/" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-300 hover:bg-gray-800 transition-colors">
+                <a href="/settings/" class="flex items-center space-x-3 px-4 py-3 rounded-lg text-gray-300 hover:bg-gray-800 transition-colors">
                     <i class="fa-solid fa-gears"></i>
                     <span>Settings</span>
                 </a>
@@ -89,32 +90,6 @@
                     <img alt="User Avatar - Loading..." src="https://placehold.co/60x60" class="w-10 h-10 rounded-full">
                 </div>
             </header>
-
-            <!-- Game Cards Grid -->
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-6">
-                <!-- Game Card: No badge -->
-                <div class="bg-gray-800 rounded-2xl shadow-lg p-4 flex flex-col space-y-4 transition-all duration-300 hover:scale-105">
-                    <div class="flex items-center space-x-4">
-                        <img src="https://placehold.co/60x60/8b5cf6/ffffff?text=Icon" onerror="this.src='https://placehold.co/60x60'" alt="Game Icon" class="w-16 h-16 rounded-xl">
-                        <div>
-                            <h3 class="text-lg font-bold">Murder Mystery</h3>
-                            <p class="text-xs dev-only">Game ID: <code>03508084567984206</code></p>
-                            <p class="text-sm text-gray-400">Try to escape the manor whilst escaping a mysterious evil.</p>
-                        </div>
-                    </div>
-                    <div class="flex justify-between items-center pt-2 border-t border-gray-700">
-                        <span class="text-sm text-gray-400">23 players online</span>
-                        <div class="flex space-x-2">
-                            <button class="px-4 py-2 text-sm font-bold bg-green-500 text-gray-900 rounded-full transition-colors hover:bg-green-600">
-                                Play
-                            </button>
-                            <button class="w-10 h-10 flex items-center justify-center bg-gray-700 text-teal-400 rounded-full transition-colors hover:bg-gray-600">
-                                <i class="fa-solid fa-hand-sparkles text-xl"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>            
-            </div>
         </main>
     </div>
     <script>
@@ -125,7 +100,8 @@
             fetch(`http://localhost:8000/viewUserInfo/${usernameElement.textContent}`)
                 .then(response => response.json())
                 .then(data => {
-                    if (data["developerMode?"] == 'true') {
+                    console.log(data);
+                    if (data['developerMode?'] == 'true') {
                         // If developer mode is enabled, show a console message
                         console.log('Developer mode is enabled for this user.');
                     } else {

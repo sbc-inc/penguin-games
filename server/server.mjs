@@ -48,6 +48,47 @@ app.get("/viewUserInfo/:username", async (req, res) => {
   }
 });
 
+// New route to change user settings.
+// It accepts a username as a URL parameter and settings as a query parameter.
+// For example: PUT /changeSettings/john_doe?developerMode?=true
+app.put("/changeSettings/:username", async (req, res) => {
+  const username = req.params.username;
+
+  // Check for the username parameter.
+  if (!username) {
+    return res.status(400).send({ error: "Username is required." });
+  }
+
+  // Construct the URL to the Cloudflare Worker's setSetting endpoint.
+  // The username is a path parameter, and all other query parameters are settings.
+  const workerUrl = new URL(`https://penguin-games-d1.rilwag2612.workers.dev/setSetting`);
+  workerUrl.searchParams.append('username', username);
+
+  // Iterate over the query parameters from the client request and append them to the worker URL.
+  for (const [key, value] of Object.entries(req.query)) {
+    workerUrl.searchParams.append(key, value);
+  }
+
+  try {
+    // Make a GET request to the worker endpoint.
+    // The worker is designed to handle this as a GET request because it reads query params.
+    const response = await fetch(workerUrl.toString());
+
+    // Check if the response from the worker is OK.
+    if (response.ok) {
+      const result = await response.json();
+      return res.status(200).send(result);
+    } else {
+      const errorData = await response.json();
+      return res.status(response.status).send(errorData);
+    }
+  } catch (error) {
+    // Handle network or unexpected errors.
+    console.error("Error updating settings:", error);
+    return res.status(500).send({ error: "Failed to connect to the external API." });
+  }
+});
+
 // Middleware for handling 404 Not Found errors.
 app.use((req, res, next) => {
   res.status(404).send({ error: "Invalid API Endpoint (404)" });

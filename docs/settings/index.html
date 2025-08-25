@@ -124,7 +124,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             // Fetch user info from the API
             const usernameElement = document.getElementById('username');
-            fetch(`http://localhost:8000/viewUserInfo/${usernameElement.textContent}`)
+            fetch(`https://penguin-games-backend.onrender.com/viewUserInfo/${usernameElement.textContent}`)
                 .then(response => response.json())
                 .then(data => {
                     if (data["developerMode?"] == 'true') {
@@ -152,7 +152,7 @@
             // Fetches the user's information and updates the page
             const fetchUserInfo = async () => {
                 try {
-                    const response = await fetch(`http://localhost:8000/viewUserInfo/${usernameElement.textContent}`);
+                    const response = await fetch(`https://penguin-games-backend.onrender.com/viewUserInfo/${usernameElement.textContent}`);
                     const data = await response.json();
                     
                     if (response.ok) {
@@ -185,7 +185,7 @@
                 const value = isEnabled ? 'true' : 'false';
                 
                 try {
-                    const response = await fetch(`http://localhost:8000/changeSettings/${username}?developerMode?=${value}`, {
+                    const response = await fetch(`https://penguin-games-backend.onrender.com/changeSettings/${username}?developerMode?=${value}`, {
                         method: 'PUT',
                         headers: {
                             'Content-Type': 'application/json'

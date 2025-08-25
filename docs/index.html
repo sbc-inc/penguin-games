@@ -122,7 +122,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             // Fetch user info from the API
             const usernameElement = document.getElementById('username');
-            fetch(`http://localhost:8000/viewUserInfo/${usernameElement.textContent}`)
+            fetch(`https://penguin-games-backend.onrender.com/viewUserInfo/${usernameElement.textContent}`)
                 .then(response => response.json())
                 .then(data => {
                     if (data["developerMode?"] == 'true') {

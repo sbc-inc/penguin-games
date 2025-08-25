@@ -3,10 +3,10 @@
   "version": "official-1.0.0",
   "description": "Create and play games by the community, for the community.",
   "scripts": {
-    "start": "concurrently \"npm start --prefix server\" \"npm start --prefix client\"",
+    "start": "concurrently \"npm start --prefix server\" \"npm start --prefix docs\"",
     "dev": "concurrently \"npm run dev-server\" \"npm run dev-client\"",
     "dev-server": "npm run dev --prefix server",
-    "dev-client": "npx serve -l 100 ./client --cors"
+    "dev-client": "npx serve -l 100 ./docs --cors"
   },
   "devDependencies": {
     "concurrently": "^8.2.1"
